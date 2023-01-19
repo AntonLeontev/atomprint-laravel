@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Color;
+use App\Models\Vendor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,6 +22,7 @@ class CartridgeFactory extends Factory
             'title' => $this->faker->name('male'),
 			'price' => $this->faker->numberBetween(10000, 500000),
 			'color_id' => Color::inRandomOrder()->value('id'),
+			'vendor_id' => Vendor::inRandomOrder()->value('id'),
         ];
     }
 }

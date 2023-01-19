@@ -3,6 +3,7 @@
 use App\Models\Cartridge;
 use App\Models\Color;
 use App\Models\Printer;
+use App\Models\Vendor;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -27,6 +28,12 @@ return new class extends Migration {
 				->constrained()
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
+
+			$table
+				->foreignIdFor(Vendor::class)
+				->constrained()
+				->cascadeOnDelete()
+				->cascadeOnUpdate();
 
             $table->unsignedBigInteger('price');
 

@@ -1,8 +1,5 @@
 <?php
 
-use App\Models\Cartridge;
-use App\Models\Printer;
-use App\Models\Vendor;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,15 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('printers', function (Blueprint $table) {
+        Schema::create('vendors', function (Blueprint $table) {
             $table->id();
-			$table->string('title')->unique();
-			$table->string('slug')->nullable();
-			$table
-				->foreignIdFor(Vendor::class)
-				->constrained()
-				->cascadeOnDelete()
-				->cascadeOnUpdate();
+			$table->string('title');
+			$table->string('thumbnail')->nullable();
             $table->timestamps();
         });
     }
@@ -36,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('printers');
+        Schema::dropIfExists('vendors');
     }
 };

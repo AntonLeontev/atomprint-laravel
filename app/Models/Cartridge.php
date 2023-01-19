@@ -14,7 +14,8 @@ class Cartridge extends Model
 		'title',
 		'slug',
 		'color_id',
-		'price'
+		'price',
+		'vendor_id',
 	];
 
 	protected $casts = [
@@ -29,6 +30,11 @@ class Cartridge extends Model
 	public function color()
 	{
 		return $this->belongsTo(Color::class);
+	}
+
+	public function vendor()
+	{
+		return $this->belongsTo(Vendor::class);
 	}
 
 	protected static function booted()

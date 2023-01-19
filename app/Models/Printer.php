@@ -11,7 +11,8 @@ class Printer extends Model
 
 	protected $fillable = [
 		'title',
-		'slug'
+		'slug',
+		'vendor_id',
 	];
 
 	public function cartridges()
@@ -19,6 +20,10 @@ class Printer extends Model
 		return $this->belongsToMany(Cartridge::class);
 	}
 	
+	public function vendor()
+	{
+		return $this->belongsTo(Vendor::class);
+	}
 
 	protected static function booted()
     {
