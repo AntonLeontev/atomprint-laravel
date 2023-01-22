@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Cartridge;
 use App\Models\Color;
+use App\Models\Vendor;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function __invoke()
     {
-		$cartridges = Cartridge::with('color')->get();
-		$colors = Color::all();
+		$vendors = Vendor::all('id', 'title');
+		$colors = Color::all('id', 'title');
 
-        return view('welcome', compact(['cartridges', 'colors']));
+        return view('welcome', compact('vendors', 'colors'));
     }
 }

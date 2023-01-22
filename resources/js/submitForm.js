@@ -1,12 +1,11 @@
 window.submitForm = async function(event) {
 	let form = event.target.closest("form");
     let formData = new FormData(form);
+	let result;
 
 	if (! _.isObjectLike(formData)) {
 		return;
 	}
-
-    let result;
 
     await axios
         .request({
@@ -15,7 +14,6 @@ window.submitForm = async function(event) {
             data: formData,
         })
         .then((response) => {
-			console.log('then', response);
             if (response.error) {
                 handleServerError(response.error);
                 return;
@@ -23,9 +21,8 @@ window.submitForm = async function(event) {
             result = response.data;
         })
         .catch((response) => {
-			console.log('Error', response);
-            if (response.response.data.errors) {
-                handleValidationError(response.response.data.errors);
+			if (response.response.data.message) {
+				handleValidationError(response.response.data.message);
                 return;
             }
 
@@ -42,11 +39,20 @@ window.submitForm = async function(event) {
     }
 };
 
-function handleValidationError(errors) {
-    Alpine.store("app").validationErrors = errors;
+function handleValidationError(message) {
+	window.dispatchEvent(
+        new CustomEvent("toast-error", {
+            detail: { 
+				message: message,
+			},
+        })
+    );
 }
 
 function handleServerError(message) {
-    Alpine.store("app").serverErrorMessage = message;
-    Alpine.store("app").serverError = true;
+    window.dispatchEvent(
+        new CustomEvent("toast-error", {
+            detail: { message: message },
+        })
+    );
 }
