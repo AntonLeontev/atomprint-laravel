@@ -31,18 +31,17 @@ class DatabaseSeeder extends Seeder
 		)->create();
 
 		VendorFactory::new()
-			->count(3)
+			->count(9)
 			->state(new Sequence(
 				['title' => 'HP'],
 				['title' => 'Canon'],
 				['title' => 'Xerox'],
+				['title' => 'Samsung'],
+				['title' => 'Kyocera'],
+				['title' => 'Brother'],
+				['title' => 'Panasonic'],
+				['title' => 'OKI'],
+				['title' => 'Konica'],
 			))->create();
-
-		$cartridges = CartridgeFactory::new()->count(5);
-
-		PrinterFactory::new()
-			->count(5)
-			->hasAttached($cartridges)
-			->create();
     }
 }

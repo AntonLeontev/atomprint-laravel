@@ -16,6 +16,7 @@
     <div class="container">
 		<div class="row">
 			<div class="col-3">
+				<x-search />
 				<x-filters :$vendors :$colors />
 			</div>
 			<div class="col-9">
@@ -23,6 +24,12 @@
 			</div>
 		</div>
     </div>
+	<form action="{{ route('pricelists.load') }}" method="post" enctype="multipart/form-data">
+		@csrf
+		<input type="file" name="file">
+		<input type="submit" value="Send">
+	</form>
+	@dd($errors)
 	<div class="toast-container position-fixed bottom-0 end-0 p-3">
 		<x-toasts.success />
 		<x-toasts.error />

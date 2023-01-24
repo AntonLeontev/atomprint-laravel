@@ -21,7 +21,7 @@ return new class extends Migration {
 			
             $table->string('title')->unique();
 
-            $table->string('slug')->unique();
+            $table->text('printers')->nullable();
 
 			$table
 				->foreignIdFor(Color::class)
@@ -35,23 +35,12 @@ return new class extends Migration {
 				->cascadeOnDelete()
 				->cascadeOnUpdate();
 
-            $table->unsignedBigInteger('price');
+            $table->unsignedBigInteger('price_1');
+            $table->unsignedBigInteger('price_2');
+            $table->unsignedBigInteger('price_5');
+            $table->unsignedBigInteger('price_office');
 
             $table->timestamps();
-        });
-
-        Schema::create('cartridge_printer', function (Blueprint $table) {
-            $table
-                ->foreignIdFor(Cartridge::class)
-                ->constrained()
-                ->cascadeOnDelete()
-                ->cascadeOnUpdate();
-
-            $table
-                ->foreignIdFor(Printer::class)
-                ->constrained()
-                ->cascadeOnDelete()
-                ->cascadeOnUpdate();
         });
     }
 

@@ -19,13 +19,29 @@ class CartridgeController extends Controller
 	public function index(Request $request)
 	{
 		$cartridges = Cartridge::query()
+			->select([
+				'id', 
+				'title',
+				'price_1', 
+				'price_2', 
+				'price_5', 
+				'price_office', 
+				'color_id', 
+				'vendor_id'
+				])
+			->when($request->has('search'), function(Builder $query){
+				$query->where('title', 'like', '%'.request('search').'%');
+			})
 			->when($request->has('vendor'), function(Builder $query){
 				$query->whereIn('vendor_id', request('vendor'));
 			})
 			->when($request->has('color'), function(Builder $query){
 				$query->whereIn('color_id', request('color'));
 			})
-			->with('color')
+			->when($request->has('sort'), function(Builder $query){
+				$query->orderBy(request('sort'), request('order', 'ASC'));
+			})
+			->with(['color', 'vendor'])
 			->simplePaginate(10)
 			->withQueryString();
 

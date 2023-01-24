@@ -24,10 +24,11 @@
 		Alpine.data('filters', () => ({
 			filter: function(event){
 				let form = event.target.closest('form');
-				let formData = new FormData(form);
+				let params = new URLSearchParams(new FormData(form));
 				
-				this.$dispatch('filter-change', {
-					filters: formData,
+				this.$dispatch('list-change', {
+					params,
+					type: 'filter',
 				})
 			}
 		}))

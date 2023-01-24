@@ -12,20 +12,18 @@ class Cartridge extends Model
 
 	protected $fillable = [
 		'title',
-		'slug',
+		'printers',
+		'price_1',
+		'price_2',
+		'price_5',
+		'price_office',
 		'color_id',
-		'price',
 		'vendor_id',
 	];
 
 	protected $casts = [
 		'price' => PriceCast::class,
 	];
-
-	public function printers()
-	{
-		return $this->belongsToMany(Printer::class);
-	}
 
 	public function color()
 	{
@@ -36,15 +34,4 @@ class Cartridge extends Model
 	{
 		return $this->belongsTo(Vendor::class);
 	}
-
-	protected static function booted()
-    {
-        static::creating(function ($cartridge) {
-            if(!empty($cartridge->slug)) {
-				return;
-			}
-
-			$cartridge->slug = str($cartridge->title)->slug()->value();
-        });
-    }
 }
