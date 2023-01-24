@@ -17,7 +17,7 @@ class CartridgeRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'between:2,150'],
-            'printers' => ['required', 'string', 'between:2,65535'],
+            'printers' => ['sometimes', 'string', 'between:2,65535'],
             'price_1' => ['required', 'integer', 'min:0', 'max:25600000'],
             'price_2' => ['required', 'integer', 'min:0', 'max:25600000'],
             'price_5' => ['required', 'integer', 'min:0', 'max:25600000'],

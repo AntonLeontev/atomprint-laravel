@@ -22,7 +22,10 @@ class Cartridge extends Model
 	];
 
 	protected $casts = [
-		'price' => PriceCast::class,
+		'price_1' => PriceCast::class,
+		'price_2' => PriceCast::class,
+		'price_5' => PriceCast::class,
+		'price_office' => PriceCast::class,
 	];
 
 	public function color()

@@ -29,7 +29,6 @@
 		<input type="file" name="file">
 		<input type="submit" value="Send">
 	</form>
-	@dd($errors)
 	<div class="toast-container position-fixed bottom-0 end-0 p-3">
 		<x-toasts.success />
 		<x-toasts.error />

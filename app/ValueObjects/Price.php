@@ -18,7 +18,6 @@ class Price implements JsonSerializable
 	public function __construct(
 		private readonly int $price,
 		private readonly string $currency = 'RUB',
-		private readonly int $precition = 100
 	) 
 	{
 		if ($price < 0) {
@@ -30,14 +29,9 @@ class Price implements JsonSerializable
 		}
 	}
 
-	public function raw(): int
-	{
-		return $this->price;
-	}
-
 	public function value(): float | int
 	{
-		return $this->price / $this->precition;
+		return $this->price;
 	}
 
 	public function currency(): string
@@ -49,11 +43,9 @@ class Price implements JsonSerializable
 	{
 		return [
 			'value' => $this->value(),
-			'raw' => $this->raw(),
 			'currency' => $this->currency(),
 			'currencySimbol' => $this->currencySimbol(),
 			'string' => $this->__toString(),
-			'presition' => $this->precition
 		];
 		
 	}
@@ -65,6 +57,6 @@ class Price implements JsonSerializable
 
 	public function __toString(): string
 	{
-		return number_format($this->price / $this->precition, 0, ',', ' ') . ' ' . $this->currencySimbol();
+		return number_format($this->price, 0, ',', ' ') . ' ' . $this->currencySimbol();
 	}
 }

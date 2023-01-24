@@ -6,6 +6,7 @@ use App\Http\Requests\CartridgeRequest;
 use App\Models\Cartridge;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CartridgeController extends Controller
 {
@@ -20,17 +21,21 @@ class CartridgeController extends Controller
 	{
 		$cartridges = Cartridge::query()
 			->select([
-				'id', 
-				'title',
-				'price_1', 
-				'price_2', 
-				'price_5', 
-				'price_office', 
-				'color_id', 
-				'vendor_id'
-				])
+				'cartridges.id', 
+				'cartridges.title', 
+				'cartridges.printers', 
+				'cartridges.price_1', 
+				'cartridges.price_2', 
+				'cartridges.price_5', 
+				'cartridges.price_office', 
+				DB::raw('colors.title AS color_title'),
+				DB::raw('vendors.title AS vendor_title'),
+			])
+			->join('colors', 'cartridges.color_id', '=', 'colors.id')
+			->join('vendors', 'cartridges.vendor_id', '=', 'vendors.id')
 			->when($request->has('search'), function(Builder $query){
-				$query->where('title', 'like', '%'.request('search').'%');
+				$query->where('cartridges.title', 'like', '%'.request('search').'%')
+					->orWhere('cartridges.printers', 'like', '%'.request('search').'%');
 			})
 			->when($request->has('vendor'), function(Builder $query){
 				$query->whereIn('vendor_id', request('vendor'));
@@ -41,7 +46,6 @@ class CartridgeController extends Controller
 			->when($request->has('sort'), function(Builder $query){
 				$query->orderBy(request('sort'), request('order', 'ASC'));
 			})
-			->with(['color', 'vendor'])
 			->simplePaginate(10)
 			->withQueryString();
 

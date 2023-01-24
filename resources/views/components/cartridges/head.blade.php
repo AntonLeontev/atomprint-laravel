@@ -2,43 +2,46 @@
 	class="row fw-bold text-center"
 	x-data="cartridgesHead"
 >
-	<div class="col-3" @click="sort('title')">
+	<div class="col-1 hstack" @click="sort('vendor_title')">
+		Бренд
+		<span x-show="state.sort === 'vendor_title'" x-cloak>
+			<x-cartridges.sort-image/>
+		</span>
+	</div>
+	<div class="col-3 hstack justify-content-center" @click="sort('title')">
 		Название
 		<span x-show="state.sort === 'title'" x-cloak>
-			<svg x-show="state.order === 'DESC'" 
-			xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-				<path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
-			</svg>
-			<svg x-show="state.order === 'ASC'"
-			xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
-				<path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
-			</svg>
+			<x-cartridges.sort-image/>
 		</span>
 	</div>
-	<div class="col-2" @click="sort('price')">
-		Цена
-		<span x-show="state.sort === 'price'" x-cloak>
-			<svg x-show="state.order === 'DESC'" 
-			xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-				<path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
-			</svg>
-			<svg x-show="state.order === 'ASC'"
-			xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
-				<path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
-			</svg>
+	<div class="col-1 hstack" @click="sort('price_1')">
+		Цена-1
+		<span x-show="state.sort === 'price_1'" x-cloak>
+			<x-cartridges.sort-image/>
 		</span>
 	</div>
-	<div class="col-2" @click="sort('color_id')">
+	<div class="col-1 hstack" @click="sort('price_2')">
+		Цена-2
+		<span x-show="state.sort === 'price_2'" x-cloak>
+			<x-cartridges.sort-image/>
+		</span>
+	</div>
+	<div class="col-1 hstack" @click="sort('price_5')">
+		Цена-5
+		<span x-show="state.sort === 'price_5'" x-cloak>
+			<x-cartridges.sort-image/>
+		</span>
+	</div>
+	<div class="col-1" @click="sort('price_office')">
+		Цена оф
+		<span x-show="state.sort === 'price_office'" x-cloak>
+			<x-cartridges.sort-image/>
+		</span>
+	</div>
+	<div class="col-1" @click="sort('color_title')">
 		Цвет
-		<span x-show="state.sort === 'color_id'" x-cloak>
-			<svg x-show="state.order === 'DESC'" 
-			xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-				<path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
-			</svg>
-			<svg x-show="state.order === 'ASC'"
-			xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
-				<path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
-			</svg>
+		<span x-show="state.sort === 'color_title'" x-cloak>
+			<x-cartridges.sort-image/>
 		</span>
 	</div>
 </div>
