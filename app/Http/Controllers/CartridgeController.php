@@ -34,8 +34,10 @@ class CartridgeController extends Controller
 			->join('colors', 'cartridges.color_id', '=', 'colors.id')
 			->join('vendors', 'cartridges.vendor_id', '=', 'vendors.id')
 			->when($request->has('search'), function(Builder $query){
-				$query->where('cartridges.title', 'like', '%'.request('search').'%')
-					->orWhere('cartridges.printers', 'like', '%'.request('search').'%');
+				$query->where(function($query){
+					$query->where('cartridges.title', 'like', '%'.request('search').'%')
+						->orWhere('cartridges.printers', 'like', '%'.request('search').'%');
+				});
 			})
 			->when($request->has('vendor'), function(Builder $query){
 				$query->whereIn('vendor_id', request('vendor'));
@@ -46,7 +48,7 @@ class CartridgeController extends Controller
 			->when($request->has('sort'), function(Builder $query){
 				$query->orderBy(request('sort'), request('order', 'ASC'));
 			})
-			->simplePaginate(10)
+			->simplePaginate()
 			->withQueryString();
 
 		return response()->json($cartridges);

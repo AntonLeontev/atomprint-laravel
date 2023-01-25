@@ -15,11 +15,13 @@
 <body>
     <div class="container">
 		<div class="row">
-			<div class="col-3">
-				<x-search />
-				<x-filters :$vendors :$colors />
+			<div class="col-2">
+				<div class="position-sticky top-0">
+					<x-search />
+					<x-filters :$vendors :$colors />
+				</div>
 			</div>
-			<div class="col-9">
+			<div class="col-10">
 				<x-cartridges />
 			</div>
 		</div>

@@ -1,0 +1,19 @@
+[x-cloak] {
+	display: none;
+}
+
+mark {
+	padding-left: 0;
+	padding-right: 0;
+	background-color: #86ff68;
+}
+
+.form-cartridge {
+	&:nth-child(odd) {
+		background: #fff;
+	}
+
+	&:nth-child(even) {
+		background: #eeeded;
+	}
+}

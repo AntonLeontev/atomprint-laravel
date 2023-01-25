@@ -2,43 +2,43 @@
 	class="row fw-bold text-center"
 	x-data="cartridgesHead"
 >
-	<div class="col-1 hstack" @click="sort('vendor_title')">
+	<div class="col hstack justify-content-center" @click="sort('vendor_title')">
 		Бренд
 		<span x-show="state.sort === 'vendor_title'" x-cloak>
 			<x-cartridges.sort-image/>
 		</span>
 	</div>
-	<div class="col-3 hstack justify-content-center" @click="sort('title')">
+	<div class="col hstack justify-content-center" @click="sort('title')">
 		Название
 		<span x-show="state.sort === 'title'" x-cloak>
 			<x-cartridges.sort-image/>
 		</span>
 	</div>
-	<div class="col-1 hstack" @click="sort('price_1')">
+	<div class="col hstack justify-content-center" @click="sort('price_1')">
 		Цена-1
 		<span x-show="state.sort === 'price_1'" x-cloak>
 			<x-cartridges.sort-image/>
 		</span>
 	</div>
-	<div class="col-1 hstack" @click="sort('price_2')">
+	<div class="col hstack justify-content-center" @click="sort('price_2')">
 		Цена-2
 		<span x-show="state.sort === 'price_2'" x-cloak>
 			<x-cartridges.sort-image/>
 		</span>
 	</div>
-	<div class="col-1 hstack" @click="sort('price_5')">
+	<div class="col hstack justify-content-center" @click="sort('price_5')">
 		Цена-5
 		<span x-show="state.sort === 'price_5'" x-cloak>
 			<x-cartridges.sort-image/>
 		</span>
 	</div>
-	<div class="col-1" @click="sort('price_office')">
-		Цена оф
+	<div class="col hstack justify-content-center" @click="sort('price_office')">
+		Офис
 		<span x-show="state.sort === 'price_office'" x-cloak>
 			<x-cartridges.sort-image/>
 		</span>
 	</div>
-	<div class="col-1" @click="sort('color_title')">
+	<div class="col hstack justify-content-center" @click="sort('color_title')">
 		Цвет
 		<span x-show="state.sort === 'color_title'" x-cloak>
 			<x-cartridges.sort-image/>
