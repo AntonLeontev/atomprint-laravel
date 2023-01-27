@@ -31,8 +31,8 @@ class CartridgeController extends Controller
 				DB::raw('colors.title AS color_title'),
 				DB::raw('vendors.title AS vendor_title'),
 			])
-			->join('colors', 'cartridges.color_id', '=', 'colors.id')
-			->join('vendors', 'cartridges.vendor_id', '=', 'vendors.id')
+			->join('colors', 'cartridges.color_id', 'colors.id')
+			->join('vendors', 'cartridges.vendor_id', 'vendors.id')
 			->when($request->has('search'), function(Builder $query){
 				$query->where(function($query){
 					$query->where('cartridges.title', 'like', '%'.request('search').'%')

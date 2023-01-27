@@ -14,6 +14,22 @@ mark {
 	}
 
 	&:nth-child(even) {
-		background: #eeeded;
+		background: #f5f7f5;
 	}
+}
+
+.icon {
+	transition: transform .4s ease;
+}
+
+.icon_rotated {
+	transform: rotateZ(180deg);
+}
+
+.sidebar {
+	max-height: 100vh;
+}
+
+.cursor-pointer {
+	cursor: pointer;
 }
