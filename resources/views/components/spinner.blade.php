@@ -1,6 +1,7 @@
 <div 
 	class="position-absolute top-0 end-0 me-0 mt-1" 
-	x-data="spinner" x-show="show" @toggle-spinner.window="toggle" x-transition x-cloak>
+	x-data="spinner" x-show="isShown" @request-start.window="show"
+	@request-finish.window="hide" x-transition x-cloak>
 	<div class="spinner-border spinner-border-sm" role="status">
 		<span class="visually-hidden">Loading...</span>
 	</div>
@@ -9,9 +10,15 @@
 <script>
 	document.addEventListener('alpine:init', () => {
 		Alpine.data('spinner', () => ({
-			show: false,
+			isShown: false,
+			show(){
+				this.isShown = true;
+			},
+			hide(){
+				this.isShown = false;
+			},
 			toggle(){
-				this.show = ! this.show
+				this.isShown = ! this.isShown
 			},
 		}))
 	})

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CartridgeRequest;
+use App\Http\Requests\CartridgeUpdateRequest;
 use App\Models\Cartridge;
 use App\Models\Color;
 use App\Models\Vendor;

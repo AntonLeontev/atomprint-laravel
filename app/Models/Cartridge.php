@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Casts\PriceCast;
+use App\QueryBuilders\CartridgeQueryBuilder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -27,6 +28,11 @@ class Cartridge extends Model
 		'price_5' => PriceCast::class,
 		'price_office' => PriceCast::class,
 	];
+	
+	public function newEloquentBuilder($query)
+	{
+		return new CartridgeQueryBuilder($query);
+	}
 
 	public function color()
 	{

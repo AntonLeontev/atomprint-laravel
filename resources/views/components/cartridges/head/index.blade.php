@@ -22,17 +22,17 @@
 				this.reset();
 				this.setStatus();
 
-				this.state.sort = this.prepareParams();
 			},
 			setStatus(){
 				const query = new URLSearchParams(location.search);
 
-				if (query.has('sort')) {
-					this.status.sort = query.get('sort');
-				}
-
 				if (query.has('order')) {
 					this.status.order = query.get('order');
+				}
+				
+				if (query.has('sort')) {
+					this.status.sort = query.get('sort');
+					this.state.sort = this.prepareParams();
 				}
 			},
 			sort: function(column){

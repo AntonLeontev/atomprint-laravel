@@ -20,9 +20,13 @@ class CartridgeFactory extends Factory
     {
         return [
             'title' => $this->faker->name('male'),
-			'price' => $this->faker->numberBetween(10000, 500000),
+			'price_1' => $this->faker->numberBetween(10000, 500000),
+			'price_2' => $this->faker->numberBetween(10000, 500000),
+			'price_5' => $this->faker->numberBetween(10000, 500000),
+			'price_office' => $this->faker->numberBetween(10000, 500000),
 			'color_id' => Color::inRandomOrder()->value('id'),
 			'vendor_id' => Vendor::inRandomOrder()->value('id'),
+			'printers' => $this->faker->text(50),
         ];
     }
 }

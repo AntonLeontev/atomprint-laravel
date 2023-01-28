@@ -6,7 +6,7 @@ use App\Models\Color;
 use App\Models\Vendor;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CartridgeRequest extends FormRequest
+class CartridgeUpdateRequest extends FormRequest
 {
     public function authorize()
     {

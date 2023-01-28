@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cartridge;
 use App\Models\Color;
 use App\Models\Vendor;
 use Illuminate\Http\Request;

@@ -34,8 +34,6 @@
 			initialize(){
 				this.reset();
 				this.setState();
-
-				this.state.search = new URLSearchParams(new FormData(this.$root));
 			},
 			setState(){
 				const input = this.$refs.search;
@@ -43,6 +41,8 @@
 
 				if (query.has('search')) {
 					this.$refs.search.value = query.get('search');
+
+					this.state.search = new URLSearchParams(new FormData(this.$root));
 				}
 			},
 			submit(event){

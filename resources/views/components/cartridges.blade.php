@@ -160,7 +160,7 @@
 				}
 			},
             getCartridges: async function(url, params = null) {
-				this.$dispatch('toggle-spinner');
+				this.$dispatch('request-start');
 
 				if(_.isNull(params)) {
 					params = this.createParams();
@@ -171,11 +171,11 @@
 				})
 					.then(response => {
 						this.cartridges = response.data;
-						this.$dispatch('toggle-spinner');
+						this.$dispatch('request-finish');
 					})
 					.catch((error) => {
 						this.$dispatch('toast-error', { message: error.code })
-						this.$dispatch('toggle-spinner');
+						this.$dispatch('request-finish');
 					});
             },
             loadColors: async function() {
