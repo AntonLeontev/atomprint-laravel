@@ -19,7 +19,7 @@
             </label>
         @endforeach
     </div>
-	<x-spinner />
+	<x-sidebar.spinner />
 </form>
 
 <script>

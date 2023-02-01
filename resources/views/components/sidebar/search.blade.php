@@ -1,4 +1,4 @@
-<form class="row position-relative mb-1" 
+<form class="row position-relative" 
 	x-data="search" @submit.prevent="submit" @reset.window="reset" x-init="initialize"
 >
 	<div class="col">

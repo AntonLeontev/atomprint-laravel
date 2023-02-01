@@ -14,6 +14,7 @@
 
 <body>
     @yield('content')
+	<x-modal />
 </body>
 
 </html>

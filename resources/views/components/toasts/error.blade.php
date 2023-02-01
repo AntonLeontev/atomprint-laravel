@@ -1,7 +1,7 @@
 <div 
 	x-data="toastError" @toast-error.window="fire"
 	class="toast align-items-center border-0 text-bg-danger" role="alert" aria-live="assertive" 
-	aria-atomic="true" :data-bs-delay="10000" id="toast-error">
+	aria-atomic="true" data-bs-autohide="false" id="toast-error">
 	<div class="d-flex">
 		<div class="toast-body" x-text="message"></div>
 		<button class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" type="button"

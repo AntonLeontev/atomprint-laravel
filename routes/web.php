@@ -16,6 +16,7 @@ Route::get('cartridges', [CartridgeController::class, 'index'])->name('cartridge
 
 Route::get('colors', [ColorController::class, 'index']);
 
-Route::post('pricelists/load', PricelistController::class)->name('pricelists.load');
+Route::post('pricelists/load', [PricelistController::class, 'upload'])->name('pricelists.upload');
+Route::get('pricelists/download', [PricelistController::class, 'download'])->name('pricelists.download');
 
 Auth::routes();

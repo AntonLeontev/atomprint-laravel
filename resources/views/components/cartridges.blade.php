@@ -85,13 +85,12 @@
 			<hr class="my-0 mx-5">
 
 			<div class="row text-left mx-0" data-column="printers" :data-id="cartridge.id">
-				<span class="h-100 py-1 px-2" x-show="! edited.printers[cartridge.id]">
-					<pre 
-						class="m-0 px-2 text-break font-sans-serif" 
-						x-text="cartridge.printers" @dblclick="edit"></pre>				
+				<span 
+					class="h-100 py-1 px-2 text-pre-line"
+					x-show="! edited.printers[cartridge.id]" x-text="cartridge.printers" @dblclick="edit">
 				</span>
 				<textarea 
-					name="printers" cols="30" rows="4" 
+					name="printers" cols="30" rows="4"
 					x-model="cartridge.printers"
 					x-show="edited.printers[cartridge.id]" @blur="blur"
 				></textarea>

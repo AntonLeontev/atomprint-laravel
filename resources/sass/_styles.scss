@@ -14,7 +14,7 @@ mark {
 	}
 
 	&:nth-child(even) {
-		background: #f5f7f5;
+		background: #eceeec;
 	}
 }
 
@@ -32,4 +32,8 @@ mark {
 
 .cursor-pointer {
 	cursor: pointer;
+}
+
+.text-pre-line {
+	white-space: pre-line;
 }

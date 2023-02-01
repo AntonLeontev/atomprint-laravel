@@ -3,6 +3,7 @@
 namespace App\ValueObjects;
 
 use App\Traits\Makeable;
+use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
 use InvalidArgumentException;
 use JsonSerializable;
@@ -45,7 +46,7 @@ class Price implements JsonSerializable
 			'value' => $this->value(),
 			'currency' => $this->currency(),
 			'currencySimbol' => $this->currencySimbol(),
-			'string' => $this->__toString(),
+			'string' => $this->__toString() . ' ' . $this->currencySimbol(),
 		];
 		
 	}
@@ -57,6 +58,6 @@ class Price implements JsonSerializable
 
 	public function __toString(): string
 	{
-		return number_format($this->price, 0, ',', ' ') . ' ' . $this->currencySimbol();
+		return number_format($this->price, 0, ',', ' ');
 	}
 }
